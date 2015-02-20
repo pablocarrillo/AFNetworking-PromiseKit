@@ -119,7 +119,10 @@
 		[[self POST:urlString parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
 			fulfiller(PMKManifold(responseObject, task));
 		} failure:^(NSURLSessionDataTask *task, NSError *error) {
-			rejecter(error);
+            id info = error.userInfo.mutableCopy;
+            info[AFHTTPRequestOperationErrorKey] = task;
+            id newerror = [NSError errorWithDomain:error.domain code:error.code userInfo:info];
+            rejecter(newerror);
 		}] resume];
 	}];
 }
@@ -130,8 +133,11 @@
 		[[self POST:urlString parameters:parameters constructingBodyWithBlock:block success:^(NSURLSessionDataTask *task, id responseObject) {
 			fulfiller(PMKManifold(responseObject, task));
 		} failure:^(NSURLSessionDataTask *task, NSError *error) {
-			rejecter(error);
-		}] resume];
+            id info = error.userInfo.mutableCopy;
+            info[AFHTTPRequestOperationErrorKey] = task;
+            id newerror = [NSError errorWithDomain:error.domain code:error.code userInfo:info];
+            rejecter(newerror);
+        }] resume];
 	}];
 }
 
@@ -141,8 +147,11 @@
 		[[self GET:urlString parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
 			fulfiller(PMKManifold(responseObject, task));
 		} failure:^(NSURLSessionDataTask *task, NSError *error) {
-			rejecter(error);
-		}] resume];
+            id info = error.userInfo.mutableCopy;
+            info[AFHTTPRequestOperationErrorKey] = task;
+            id newerror = [NSError errorWithDomain:error.domain code:error.code userInfo:info];
+            rejecter(newerror);
+        }] resume];
 	}];
 }
 
@@ -153,7 +162,10 @@
 		[[self PUT:urlString parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
 			fulfiller(PMKManifold(responseObject, task));
 		} failure:^(NSURLSessionDataTask *task, NSError *error) {
-			rejecter(error);
+            id info = error.userInfo.mutableCopy;
+            info[AFHTTPRequestOperationErrorKey] = task;
+            id newerror = [NSError errorWithDomain:error.domain code:error.code userInfo:info];
+            rejecter(newerror);
 		}] resume];
 	}];
 }
@@ -164,8 +176,11 @@
 		[[self HEAD:urlString parameters:parameters success:^(NSURLSessionDataTask *task) {
 			fulfiller(task);
 		} failure:^(NSURLSessionDataTask *task, NSError *error) {
-			rejecter(error);
-		}] resume];
+            id info = error.userInfo.mutableCopy;
+            info[AFHTTPRequestOperationErrorKey] = task;
+            id newerror = [NSError errorWithDomain:error.domain code:error.code userInfo:info];
+            rejecter(newerror);
+        }] resume];
 	}];
 }
 
@@ -175,8 +190,11 @@
 		[[self PATCH:urlString parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
 			fulfiller(PMKManifold(responseObject, task));
 		} failure:^(NSURLSessionDataTask *task, NSError *error) {
-			rejecter(error);
-		}] resume];
+            id info = error.userInfo.mutableCopy;
+            info[AFHTTPRequestOperationErrorKey] = task;
+            id newerror = [NSError errorWithDomain:error.domain code:error.code userInfo:info];
+            rejecter(newerror);
+        }] resume];
 	}];
 }
 
@@ -186,8 +204,11 @@
 		[[self DELETE:urlString parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
 			fulfiller(PMKManifold(responseObject, task));
 		} failure:^(NSURLSessionDataTask *task, NSError *error) {
-			rejecter(error);
-		}] resume];
+            id info = error.userInfo.mutableCopy;
+            info[AFHTTPRequestOperationErrorKey] = task;
+            id newerror = [NSError errorWithDomain:error.domain code:error.code userInfo:info];
+            rejecter(newerror);
+        }] resume];
 	}];
 }
 

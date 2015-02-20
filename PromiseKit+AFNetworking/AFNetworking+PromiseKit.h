@@ -26,6 +26,7 @@
 #import <Promise.h>
 
 static NSString *AFHTTPRequestOperationErrorKey =  @"afHTTPRequestOperationError";
+static NSString *NSURLSessionDataTaskErrorKey =  @"nsURLSessionDataTaskError";
 
 @interface AFHTTPRequestOperation (Promises)
 /**
